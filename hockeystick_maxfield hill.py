@@ -44,7 +44,7 @@ class Puck(simpleGE.SuperSprite):
         self.y=200
     def checkEvents(self):
         if self.collidesWith(self.scene.net):
-            self.scene.score += 1
+            self.scene.score1 += 1
             self.reset()
         if self.collidesWith(self.scene.net2):
             self.scene.score2 += 1
@@ -170,8 +170,8 @@ class Game(simpleGE.Scene):
         self.lblScore2 = simpleGE.Label()
         self.lblScore2.text = "Score: 0"
         self.lblScore2.center = (50, 100)
-        self.score = 0
-        
+        self.score1 = 0
+        self.score2 = 0        
 
         self.lblTime = simpleGE.Label()
         self.lblTime.text = "Time left: 120"
@@ -203,8 +203,8 @@ class Game(simpleGE.Scene):
         if timeLeft < 0:
             self.stop()
         self.lblTime.text = f"Time left: {timeLeft:.2f}"
-        self.lblScore.text = f"score: {self.score}"
-        self.lblScore2.text = f"score: {self.score}"
+        self.lblScore.text = f"score: {self.score1}"
+        self.lblScore2.text = f"score: {self.score2}"
         
         if self.instructions.clicked:
             self.resetGame()
